@@ -1,0 +1,6 @@
+geminivision
+.env
+temp
+temp_output
+models
+__pycache__
