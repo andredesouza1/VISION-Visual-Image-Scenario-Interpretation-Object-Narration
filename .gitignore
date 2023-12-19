@@ -4,3 +4,6 @@ temp
 temp_output
 models
 __pycache__
+.streamlit
+default.sqlite
+tutorials
