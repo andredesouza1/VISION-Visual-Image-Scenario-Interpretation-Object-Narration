@@ -7,3 +7,5 @@ __pycache__
 .streamlit
 default.sqlite
 tutorials
+image_test
+images
