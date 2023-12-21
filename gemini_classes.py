@@ -45,7 +45,7 @@ class Vision_Search:
                 prompt=prompt.format(item=item),
                 image_documents=image,
             )
-            print(searching.text)
+            # print(searching.text)
             if "yes" in searching.text.lower():
                 # print("found")
                 counter = counter + 1
@@ -65,7 +65,7 @@ class Vision_Search:
                 prompt=description_prompts.visually_impaired_navigation_prompt.format(item=item),
                 image_documents=image_documents,
             )
-            return description.text
+            return description.text, found, image_documents
         
          
 

@@ -18,7 +18,7 @@ for filename in os.listdir(folder_path):
 uploaded_file = st.file_uploader("Upload Image", type=['png', 'jpg'], accept_multiple_files=False, label_visibility="visible")
  
 if uploaded_file is not None:
-    with NamedTemporaryFile(prefix='C:/Users/futeb/Coding/github/GeminiVision/temp/', suffix=".jpg", delete=False,) as tmp_file:
+    with NamedTemporaryFile(prefix='C:/Users/futeb/Coding/github/GeminiVision/temp/', suffix=".mp4", delete=False,) as tmp_file:
         tmp_file.write(uploaded_file.getvalue())
         temp_file_path = tmp_file.name
         st.write(temp_file_path)

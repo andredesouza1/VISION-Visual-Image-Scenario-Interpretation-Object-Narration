@@ -5,7 +5,7 @@ import imageio
 def extract_frames(input_path, output_path):
     """Extracts frames from a video clip every half second, preserving original dimensions."""
     # clears temp folder of images
-    folder_path = "./video_frames"
+    folder_path = output_path
     for filename in os.listdir(folder_path):
         file_path = os.path.join(folder_path, filename)
         if os.path.isfile(file_path):
@@ -45,7 +45,7 @@ def extract_frames(input_path, output_path):
     
 if __name__ == "__main__":
     input_video_path = "video\walking_through_store.mp4"
-    output_frames_path = "video_frames"
+    output_frames_path = "./video_frames"
 
     extract_frames(input_video_path, output_frames_path)
 
