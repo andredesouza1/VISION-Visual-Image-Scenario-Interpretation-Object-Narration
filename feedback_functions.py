@@ -31,8 +31,8 @@ class StandAlone(Provider):
     
 
 
-class Desciption_Similarity(Provider):
-    def description_similarity_score(self, image_url) -> float:
+class Desciption_Accuracy(Provider):
+    def description_accuracy_score(self, image_url) -> float:
         image_documents = load_image_urls([image_url])
         description_score = float(gemini_pro.complete(prompt = "Is the image of a city? Respond with the float likelihood from 0.0 (not city) to 1.0 (city).",
         image_documents=image_documents).text)

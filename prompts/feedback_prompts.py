@@ -1,7 +1,7 @@
 
 
 
-DESCRIPTION_ACCURACY_PROMPT = """
+DESCRIPTION_ACCURACY_PROMPT ="""
 You are a DESCRIPTION ACCURACY grader providing a score based on the accuracy of a GENERAL DESCRIPTION compared with the contents of a IMAGE REGION DESCRIPTION ARRAY.
 
 Output a number between 0-10 where 0 is low ACCURACY and 10 is high ACCURACY. Never elaborate.
