@@ -2,6 +2,9 @@
 from trulens_eval.tru_custom_app import instrument
 from llama_index.multi_modal_llms.generic_utils import ImageDocument
 from llama_index.multi_modal_llms.gemini import GeminiMultiModal
+import set_api_key
+import os
+from prompts import description_prompts
 
 
 
@@ -21,15 +24,50 @@ class Gemini:
     
 # VISION SEARCH
 class Vision_Search:
-    def search(self, prompt, image_path):
+    def search (prompt, image_path, item):
+        
         image_documents = []
-        for file_path in image_path:
+        counter = 0
+
+        file_paths = [os.path.join(image_path, file) for file in os.listdir(image_path)]
+        # print(file_paths)
+    
+        for file_path in file_paths:
             # Create ImageDocument objects instead of appending raw image data
             image_documents.append(ImageDocument(image_path=file_path)) 
         
-        for i in range(len(image_documents))
-            completion = gemini_pro.complete(
-                prompt=prompt,
-                image_documents=image_documents[i],
+        for i in range(len(image_documents)):
+            print(counter)
+            image = []
+            image.append(image_documents[i])
+            print(image)
+            searching = gemini_pro.complete(
+                prompt=prompt.format(item=item),
+                image_documents=image,
             )
-            return completion
+            print(searching.text)
+            if "yes" in searching.text.lower():
+                # print("found")
+                counter = counter + 1
+            if "no" in searching.text.lower():
+                if counter > 0:
+                    counter = counter - 1
+            if counter >= 2:
+                return f"{item} found nearby", image, True, item
+        return f"{item} not found nearby", image, False, item  
+
+
+    def describe(search_function):
+        message, image_documents, found, item = search_function[0], search_function[1], search_function[2], search_function[3]
+        print(message)
+        if found == True:
+            description = gemini_pro.complete(
+                prompt=description_prompts.visually_impaired_navigation_prompt.format(item=item),
+                image_documents=image_documents,
+            )
+            return description.text
+        
+         
+
+
+        
