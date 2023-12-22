@@ -2,13 +2,15 @@
 from trulens_eval.tru_custom_app import instrument
 from llama_index.multi_modal_llms.generic_utils import ImageDocument
 from llama_index.multi_modal_llms.gemini import GeminiMultiModal
+from llama_index.llms.gemini import Gemini 
 import set_api_key
 import os
 from prompts import description_prompts
 
 
 
-gemini_pro = GeminiMultiModal(model_name="models/gemini-pro-vision")
+gemini_pro_vision = GeminiMultiModal(model_name="models/gemini-pro-vision")
+gemini_pro = GeminiMultiModal(model_name="models/gemini-pro")
 
 
 
@@ -16,9 +18,17 @@ gemini_pro = GeminiMultiModal(model_name="models/gemini-pro-vision")
 class Gemini:
     @instrument
     def complete(self, prompt, image_documents):
-        completion = gemini_pro.complete(
+        completion = gemini_pro_vision.complete(
             prompt=prompt,
             image_documents=image_documents,
+        )
+        return completion
+    
+class Gemini_Pro:
+    @instrument
+    def complete(prompt):
+        completion = gemini_pro.complete(
+            prompt=prompt,
         )
         return completion
     

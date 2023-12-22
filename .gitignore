@@ -9,5 +9,6 @@ default.sqlite
 tutorials
 image_test
 images
-video_frames
-video
+accuracy_eval.py
+streamlit_main.py
+main.py
