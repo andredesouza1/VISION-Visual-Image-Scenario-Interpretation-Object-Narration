@@ -11,3 +11,5 @@ st.image(subset_dataset["url"][number])
 filtered_data = [{"x": entry["x"], "y": entry["y"], "phrase": entry["phrase"]} for entry in subset_dataset['regions'][number]]
 
 st.write(filtered_data)
+
+st.write(subset_dataset["relationships"][number])

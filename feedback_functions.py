@@ -37,3 +37,5 @@ class Desciption_Accuracy(Provider):
         description_score = float(gemini_pro.complete(prompt = "Is the image of a city? Respond with the float likelihood from 0.0 (not city) to 1.0 (city).",
         image_documents=image_documents).text)
         return description_score
+    
+

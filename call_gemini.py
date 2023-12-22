@@ -6,8 +6,8 @@ from llama_index.multi_modal_llms.generic_utils import ImageDocument
 
 
 
-def call_gemini_vision(user_input: str):
-    temp_dir_path = os.path.abspath("./temp")
+def call_gemini_vision(user_input: str,path):
+    temp_dir_path = os.path.abspath(path)
     print(temp_dir_path)
 
     file_paths = [os.path.join(temp_dir_path, file) for file in os.listdir(temp_dir_path)]

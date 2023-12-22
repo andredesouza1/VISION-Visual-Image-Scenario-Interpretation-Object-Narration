@@ -2,7 +2,7 @@ import json
 from datasets import load_dataset, Dataset
 
 # Load the dataset
-dataset = load_dataset("visual_genome", "relationships_v1.0.0")
+dataset = load_dataset("visual_genome", "question_answers_v1.2.0")
 total_number = 500
 # Load a smaller subset, e.g., first 1000 samples
 subset_dataset = dataset["train"].select([i for i in range(total_number)])
